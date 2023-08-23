@@ -1,0 +1,64 @@
+3)IAM USER :- [aditi.gothe]
+  ATTACHED POLICIES :- EC2-WRITE-CUSTOMER
+  ARN :- arn:aws:iam::505829440903:policy/EC2-WRITE-CUSTOMER
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:AcceptVpcPeeringConnection",
+                "ec2:AssociateIpamResourceDiscovery",
+                "ec2:CopyImage",
+                "ec2:AttachInternetGateway",
+                "ec2:AcceptTransitGatewayVpcAttachment",
+                "ec2:AssociateVpcCidrBlock",
+                "ec2:AssociateRouteTable",
+                "ec2:AllocateIpamPoolCidr",
+                "ec2:AssociateTrunkInterface",
+                "ec2:AssociateTransitGatewayRouteTable",
+                "ec2:CancelExportTask",
+                "ec2:BundleInstance",
+                "ec2:AttachVerifiedAccessTrustProvider",
+                "ec2:AcceptAddressTransfer",
+                "ec2:CancelCapacityReservationFleets",
+                "ec2:AssociateClientVpnTargetNetwork",
+                "ec2:AssignPrivateIpAddresses",
+                "ec2:CancelSpotInstanceRequests",
+                "ec2:AdvertiseByoipCidr",
+                "ec2:AssociateSubnetCidrBlock",
+                "ec2:AssignPrivateNatGatewayAddress",
+                "ec2:CancelCapacityReservation",
+                "ec2:AssociateAddress",
+                "ec2:CancelBundleTask",
+                "ec2:AttachVolume",
+                "ec2:AssociateInstanceEventWindow",
+                "ec2:AcceptTransitGatewayPeeringAttachment",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AssociateNatGatewayAddress",
+                "ec2:AttachClassicLinkVpc",
+                "ec2:AssociateDhcpOptions",
+                "ec2:AssignIpv6Addresses",
+                "ec2:AssociateEnclaveCertificateIamRole",
+                "ec2:AcceptVpcEndpointConnections",
+                "ec2:AttachVpnGateway",
+                "ec2:CancelConversionTask",
+                "ec2:AssociateTransitGatewayMulticastDomain",
+                "ec2:AllocateAddress",
+                "ec2:AuthorizeClientVpnIngress",
+                "ec2:AssociateTransitGatewayPolicyTable",
+                "ec2:AssociateVerifiedAccessInstanceWebAcl",
+                "ec2:AcceptReservedInstancesExchangeQuote",
+                "ec2:AllocateHosts",
+                "ec2:AttachNetworkInterface",
+                "ec2:CancelImportTask",
+                "ec2:ApplySecurityGroupsToClientVpnTargetNetwork",
+                "ec2:AcceptTransitGatewayMulticastDomainAssociations",
+                "ec2:AssociateIamInstanceProfile"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
