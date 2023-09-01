@@ -1,0 +1,54 @@
+LAUNCH TWO AMAZON INSTANCE WITH PUBLI IP ENABLE :-
+
+1.ENSURE THAT BOTH INSTANCE USE DIFFERENT AWS KEYPAIR
+2.ENABLE PORT 22 FOR SSH ON BOTH INSTANCE
+3.NAME INSTANCE1 AS ORIGINAL INSTANCE AND ITS ATTACHED ROOT EBS volum AS original volume
+4.NAME INSTANCE1 AS TEMP INSTANCE AND ITS ATTACHED ROOT EBS volum AS  TEMP volume
+
+STEPS :-
+1.STOP YPUT ORIGINAL INSTANCE
+2.DETECH THE ROOT ORIGINAL VOL FROM ORIGINAL INSTANCE
+3.ATTACHED ORIGINAL VOL TO TEMP INSTANCE
+4.COPY .SSH/AUTHORIZED_KEYS FROM TEMP VOL TO ORIGINAL VOL
+
+COMMANDS :-
+
+lsblk
+sudo mkdir /mnt/tempvol
+
+sudo mount -o nouuid /dev/xvdf1 /mnt/tempvol
+
+cp .ssh/authorized_keys /mnt/tempvol/home/ec2-user/.ssh/authorized_keys
+
+sudo -l /mnt/tempvol/home/ec2-user/.ssh
+TR
+sudo /mnt/tempvol
+
+sudo umount /mnt/tempvol
+
+5.DETECH THE ORIGINAL VOL FROM ORIGINAL INSTANCE
+6.RE-ATTACHED THE ORIGINAL VOL TO ORIGINAL INSTANCE AS THE ROOT VOLUME
+
+7.START THE ORIGINAL INSTANCE AND CONNECT TO THE ORIGINAL INSTANCE "USING THE KEY PAIR OF YOUR TEMP INSTANCE"
+
+
+
+SNAPSHOT :-
+
+[ec2-user@ip-172-31-43-69 ~]$ lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0   8G  0 disk
+└─xvda1 202:1    0   8G  0 part /
+xvdf    202:80   0   8G  0 disk
+└─xvdf1 202:81   0   8G  0 part
+[ec2-user@ip-172-31-43-69 ~]$ sudo mkdir /mnt/tempvol
+[ec2-user@ip-172-31-43-69 ~]$ sudo mount -o nouuid /dev/xvdf1 /mnt/tempvol
+[ec2-user@ip-172-31-43-69 ~]$ cp .ssh/authorized_keys /mnt/tempvol/home/ec2-user/.ssh/authorized_keys
+[ec2-user@ip-172-31-43-69 ~]$ sudo -l /mnt/tempvol/home/ec2-user/.ssh
+sudo: /mnt/tempvol/home/ec2-user/.ssh: command not found
+[ec2-user@ip-172-31-43-69 ~]$ sudo ls -l /mnt/tempvol/home/ec2-user/.ssh
+total 4
+-rw------- 1 ec2-user ec2-user 394 Sep  1 06:25 authorized_keys
+[ec2-user@ip-172-31-43-69 ~]$ sudo umount /mnt/tempvol
+[ec2-user@ip-172-31-43-69 ~]$
+
