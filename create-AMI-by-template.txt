@@ -1,0 +1,28 @@
+TASK : CREATE AMI USING TEMPLATE 
+
+1.FIRST lets CREATE A INSTANCE (for EX.centos)
+    -1.enter the name 
+	-2.chose the image as per your choise 
+	-3.allow http on the instance
+	-4. create instane 
+
+2.now to check the instance is running or not you can connect to the insatnce
+
+(NOW TO CREATE IMAGE FROM THESE INSTANCE)
+3. select the instance, press right click
+    - select image and templates 
+	OR
+	SELECT INSTANCE, GO TO ACTION AND SELECT image and templates 
+	    -SELECT CREATE IMAGES
+
+4.ENTER THE IMAGES NAME (as per your choice)
+5.keep remaing setting default and select CREATE IMAGE
+
+6. FROM LEFT HAND COLSOLE SELECT 'AMI'
+   -- THE newly created 'AMI' WILL BE VISIBLE (wait for status to enable )
+
+7.[too launch instance from these AMI or to user these AMI ]
+  - select AMI and choose 'LAUNCH INSTANCEF FROM AMI'
+  - OR you can user the normal/ previous method to launch instance
+   NOTE :- [while seect AMI choose 'MY AMI' option and select 'OWNED BY ME '] and launch insatnce.
+   

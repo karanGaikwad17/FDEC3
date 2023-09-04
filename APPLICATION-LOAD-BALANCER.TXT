@@ -1,0 +1,67 @@
+1.first we need to launch 6 instance each 2 instance will hold same modules
+	userdate for home page   
+	#!/bin/bash
+
+	sudo yum update
+	sudo yum install httpd -y
+	mkdir /var/www/html/mobile
+	sudo echo "<h1> MOBILE page mobile $(hostname -f)</h1>" > /var/www/html/mobile/index.html
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+
+	userdate for mobile page
+	#!/bin/bash
+
+	sudo yum update
+	sudo yum install httpd -y
+	mkdir /var/www/html/mobile
+	sudo echo "<h1> MOBILE page mobile $(hostname -f)</h1>" > /var/www/html/mobile/index.html
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+
+	userdate for laptop page
+	#!/bin/bash
+
+	sudo yum update
+	sudo yum install httpd -y
+	mkdir /var/www/html/laptop
+	sudo echo "<h1> LAPTOP page laptop $(hostname -f)</h1>" > /var/www/html/laptop/index.html
+	sudo systemctl start httpd
+	sudo systemctl enable httpd
+
+2.lets create 3 target group each will contain 2 instance(of same web page)
+	1.choose instance type 
+	2.name of target group
+	3.http : 80
+	4.health check : http 
+					 path/(for web page ) (Ex. /index.html)
+	5.create 
+	6.SELECT THE instance THAT HOLDS WEB PAGES	
+	7.SELECT INCLUDE BELOW 
+REPEATE THE ABOVE STEPS TO CREATE REMAING 2 TARGET group
+
+3.NOW WE NEED TO CREATE A LOAD BALANCER 
+	1.SELECT LOAD BALANCER 
+	2.SELECT APPLICATION LOAD BALANCER 
+	  1.load balancer name (KEEP REMAING SETTING DEFAULT)
+	  2.Network mapping (SELECT THE AVIALABALITY ZONES)
+	  3.SELECT SECURITY GROUPS 
+	  4.Listeners and routing :- HTTP 80 - SELECT TARGET GROUP T1
+	   KEEP REMAING SETTING AS DEFAULT & create LOAD BALANCER
+	   
+	 4.select created load balancer 
+	   1.select listern and  rule 
+	   2.select default created rule 
+	   3.add rule 
+	   4.name the rule (Ex.mobile-rule)   next
+	   5.ADD CONDITION (CHOSE PATH ) & (ENTER THE PATH OF WEB PAGE Ex.mobile/index.html) NEXT 
+	   6. FORWARD TO TARGET GROUP & SELECT T2 TARGET GROUP 
+	   7.SET PRIORITY (200)
+		NEXT AND CREATE 
+
+4. SELECT ADD RULE FOR (LAPTOP PAGE ) & REPEATE THE ABOVE STEP 
+   NOTE :- CHAGE THE PATH ACCORDINGLY AND SET PRIORITY (201)
+   
+5.SWITCH TO LOAD BALANCER TAB & SELECT DNS NAME AND PASTE IT ON NEW WEB PAGE.
+WEBPAGE WILL BE HOSTED.   
+   

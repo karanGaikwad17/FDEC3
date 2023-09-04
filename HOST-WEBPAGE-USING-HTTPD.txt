@@ -1,0 +1,43 @@
+TASK: TO HOST A WEBSITE USING httpd
+
+1.CREATE AN INSTANCE 
+(to host a static website we need to install httpd packages)
+	- COMMANDS
+	1. yum install httpd -y (download & install include dependent packages)
+	2.httpd -version (to check version)
+	3.(ROOT FOLDER OF HTTPD)
+	           - cd /var/www/html
+	4.(here we need to create web page file - index.html) 
+	  command -  [ vi index.html ]
+	
+         <!doctype html>
+				<html>
+				  <head>
+					<title>This is the title of the webpage!</title>
+				  </head>
+				  <body>
+					<p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+				  </body>
+				</html>
+				
+	you can place the above code in the file 
+ or 
+	you can place your alread created  files of webpage below is example of index.html
+  5.ls (to check created file )
+  6.systemctl start httpd  (to start the httpd services) 
+   7. systemctl enable  httpd 
+   8.systemctl status httpd (to check status of httpd )
+   (to install firewall packages)
+    -- (yum install firewalld )
+	
+   9.systemctl start firewalld.services (to active the firewall services)
+   
+   10.systemctl enable  firewalld.services
+      (Get a list of allowed ports in the current zone:)
+	       [-firewall-cmd --list-ports]
+		   
+	 (Add a port to the allowed ports to open it for incoming traffic:)
+            [ -sudo firewall-cmd --add-port=port-number/port-type] 
+  (TO CHECK WHEATHER THE WEBSITE IS PUBLICALLY ASSCESSABLE OR NOT )
+  11. ip addr			
+        -- COPY THE PUBLIC IP ADDRESS AND PASTE OVER THE BROWSER.

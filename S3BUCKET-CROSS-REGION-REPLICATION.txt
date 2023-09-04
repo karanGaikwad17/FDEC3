@@ -1,0 +1,44 @@
+TASK : Create S3 bucket and cross region replication
+
+1.(First let's create a s3 bucket )
+		1.select S3 services and CREATE BUCKET
+		2.Bucket name 
+		3.AWS Region 
+		4.Select ACL DISABLE
+		5.ENABLE BUCKET VERSIONING
+
+		6.Keep remaining setting as default
+		7.create Bucket 
+		8.OPEN THE CREATED BUCKET AND IN OBJECT SECTION SELECT UPLOAD 
+		9.UPLOAD THE FILES OR FOLDER U WANT TO UPLOAD 
+		
+2. CREATE THE ANOTHER BUCKET WITH STEPS AS MENTIONED ABOVE.(ENSURE YOU CREATE BUCKET IN ANOTHER REGION DIFFERENT THAT PERVIOUS ONE.)
+
+3.(NOW TO ENABLE BUCKET cross region replication )
+
+		1.SELECT THE FIRST BUCEKT WE CREATED
+		2.SELECT THE MANAGEMENT TAB
+		3.SELECT CREATE  REPLICATION RULE 
+		  -1.ENTER REPLICATION RULE NAME 
+		  -2.STATUS : ENABLE 
+		  -3.IN SOURCE BUCKET TAB :-
+				   -CHOSE A RULE SCOPE : [APPLY TO ALL OBJECT IN BUCEKT]
+		  -4.DESTINATION :-
+						   SELECT CHOSE BUCKET IN THIS ACCOUNT (which is our another regional bucket where we want to replicate)
+		  -5.IAM Role :- 
+						 SELECT CHOSE FROM EXISTING IAM Roles 
+		  -6.destination storage class :- (if you want to chose another  storage class you can select that.)
+		  -7.save 
+		  -8.in replication existing object dialog box :-
+														SELECT YES,REPLICATE EXISTING OBJECT
+		  -9.SUBMIT
+		
+4. YOU WILL ABLE TO SEE THE Created REPLICATION RULE
+
+5.(TO CHECK WHEATHER REPLICATION RULE IS WORKING OR NOT )
+   1.SELECT 1ST BUCKET AND IN OBJECT SECTION,SELECT UPLOAD
+   2. UPLOAD ANY NEW OBJECT 
+   3.THEN SELECT THE ANOTHER BUCKET PRESENT IN ANOTHER Region
+      - YOU WILL ABLE TO SEE THE SAME OBJECT THAT WE UPLOADED IN FIRST BUCKET (Some time it takes time so try to referesh.)
+	  
+		   

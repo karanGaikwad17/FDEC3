@@ -1,0 +1,43 @@
+TASK : Create IAM role with Time-Limited Permission for EC2 instances
+
+(First we need to create a IAM policy with time_limited permission for ec2-instances for that:-)
+
+		1.select IAM SERVICES THEN IAM POLICIES 
+		2.SELECT CREATE POLICIES
+		3.IN Specify permissions TAB SELECT [JSON FORMAT]
+		4.In policy editor tab we need create a json format for time-limited permission on EC2-instances 
+		 (here is the json format)
+									{
+									"Version": "2012-10-17",
+									"Statement": [
+										{
+											"Effect": "Allow",
+											"Action": [
+												"ec2:DescribeAccountAttributes",
+												"ec2:DescribeAddresses",
+												"ec2:DescribeAddressesAttribute"
+											],
+											"Resource": "*",
+											"Condition": {
+												"DateGreaterThan": {
+													"aws:CurrentTime": "2020-04-01T00:00:00Z"
+												},
+												"DateLessThan": {
+													"aws:CurrentTime": "2020-06-30T23:59:59Z"
+												}
+											}
+										}
+									]
+								 }
+								 
+		NOTE :- (From edit statement tab select the EC2 Services Then Select the permisson we want to allocate.) & NEXT. 
+		5.ENTER THE POLICY NAME & DESCRIPTION 
+		6.THEN CREATE POLICY
+(NOW WE NEED TO CREATE IAM ROLE FOR THAT )
+1.SELECT IAM ROLES
+2.CREATE ROLES 
+3.Trusted entity type : SELECT AWS SERVICES (as we want to create role  for ec2 services)
+4.Use case : SELECT THE EC2 services
+5. From Permissions policies :- SELECT THE TIME-LIMITED POLICY THAT WE HAVE Created Before 
+6. Add Role Name and DESCRIPTION and create Role.
+(Role will be create and u will be able to see the details of created Roles)		
