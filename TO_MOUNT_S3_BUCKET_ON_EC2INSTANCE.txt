@@ -1,0 +1,49 @@
+﻿TO MOUNT THE S3 BUCKET ON EC2-INSTANCE:- 
+1.Launch one instance with default setting 
+2. To create  IAM user :- 
+     - create a iam user and attach the managed policy of S3fullaccess to him 
+
+3.Under the security creditial :- 
+  -  Create an access key and and secret key and save it 
+4. Select the instance and start the terminal
+ Run the commands :- 
+  1.sudo su -
+2.apt-get update -y
+3.apt-get install s3fs awscli -y 
+5. Create S3 bucket and allow public access (keep remaining setting default) and 
+Create bucket
+--- upload a document/file in the bucket for demo purpose 
+6.create IAM user :- 
+     -- enter the user name (select default setting )
+  ---- attached AWS managed policy (S3fullaccess) to the user and create user.
+
+7.to mount the S3 bucket permanently:- 
+-- switch to the terminal and create a directory
+ CMD --- mkdir /test
+         --- touch /etc/passwd-s3fs
+        ----chmod 600 /etc/passwd-s3fs
+        -----vim /etc/passwd-s3f
+(Here we have to paste the access key and secret key that we save previously in the format of )
+Asscesskey: secretkey
+ --- :wq ( save and quit )
+7. Vim /etc/fuse.conf
+(Here we need to remove # comment tag from the line 'user-allow-other')
+ And save and quit 
+8.vim /etc/fstab :- add the line 
+ ---s3fs#bucket_name /mount_point  fuse  
+_netdev.allow_other 0 0 
+Save and quit 
+9.mount -a
+10.df -Th /test/ 
+---- cd /test/
+---ls (you will see the same file that u uploaded from AWS console on S3 bucket ) 
+Also u can create files and check on aws S3 console on S3 bucket that the files will be present over there.
+
+
+
+
+
+   
+          
+
+
