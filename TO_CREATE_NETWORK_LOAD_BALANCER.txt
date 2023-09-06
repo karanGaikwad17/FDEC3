@@ -1,0 +1,32 @@
+﻿TO CREATE AN NETWORK LOAD BALANCER:-
+1. First launch 6 instances,each 2 of them form the same modules.
+2. From EC2 console select target groups:-
+ ---- create 3 different target groups,each of them having 2 insurance of same modules 
+3. Now we need to create an APPLICATION LOAD BALANCER :-
+1.select load balancer 
+2.select application load balancer :-
+--- go with default configurations
+ --- add the same security groups as applied to instances 
+----For Listeners and routing:- 
+  ---Keep default listener port :80 and For Default action, choose the target group that you created.
+---review and create load balancer 
+3.select the created load balancer and select the rule from the panal then 
+--Select add rule 
+-- add the rule for target groups.and create rule .
+4.Now we need to create a TARGET GROUP for APL:-
+--- select the target groups and create a target group 
+--- select using ALP 
+--- then select the create APPLICATION LOAD BALANCER
+-- keep default configuration and create target group 
+5.NOW let's create a NETWORK LOAD BALANCER:-
+   1.select load balancer and select NETWORK LOAD BALANCER 
+2.go with Basic configuration :-
+       ---- select same security groups 
+       --- In Listeners and routing:-  keep default port :80 and   select the 4th target group that we have create USING ALP.
+    ---keep option configuration default and create 
+6.now Test the load balancer :- 
+----choose Load Balancers and Select the Network load  balancer.
+---Copy the DNS name of the load balancer
+   
+
+ 
